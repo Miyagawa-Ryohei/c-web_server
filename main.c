@@ -11,7 +11,7 @@ int test(Request* req, Response* res) {
     return 0;
 }
 
-int index(Request* req, Response* res) {
+int index_html(Request* req, Response* res) {
     char* html = "\
 <html xmlns='http://www.w3.org/1999/xhtml' lang='ja'>\
  <head>\
@@ -47,7 +47,7 @@ int main(void) {
     printf("hello world %s:%s\n", p->key, p->value);
     Router r = new_router();
     Server* s = new_server(&r);
-    s->router->set(s->router,"/","GET",index);
+    s->router->set(s->router,"/","GET",index_html);
     s->router->set(s->router,"/test","GET",test);
     s->serve(s, 8080);
 }
